@@ -49,6 +49,7 @@ end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3
 
 # 等待直到进入目标时间段
 while datetime.now() < start_time:
+    print("休眠中\n")
     time.sleep(0.1)  # 短暂休眠，避免过多的CPU使用
 
 while start_time <= datetime.now() <= end_time:
