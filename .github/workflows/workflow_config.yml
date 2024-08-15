@@ -1,4 +1,5 @@
 name: Your Github Workflow name
+
 on:
   workflow_dispatch:
   schedule:
@@ -9,9 +10,15 @@ jobs:
   run-python-script:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
           python-version: '3.8.0'
-      - run: pip install requests
-      - run: python src/first_python_script.py
-       
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run Python script
+        run: python src/first_python_script.py
