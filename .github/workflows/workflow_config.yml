@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # IMPORTANT: Set cron job in UTC timezone
-    - cron: '57 0 * * *'
+    - cron: '00 0 * * *'
 
 jobs:
   run-python-script:
