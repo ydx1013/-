@@ -124,7 +124,7 @@ def main():
         if '"success":true' in decoded_content:
             print("预定成功")
             break
-        time.sleep(0.2)
+    time.sleep(0.2)
 main()
 
 
