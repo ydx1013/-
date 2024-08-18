@@ -9,12 +9,11 @@ on:
 jobs:
   run-python-script:
     runs-on: ubuntu-latest
-  env:
-    USERNAME: ${{ secrets.USERNAME }}
-    PASSWORD: ${{ secrets.PASSWORD }}
-    instrumentId: ${{ secrets.instrumentId }}
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      instrumentId: ${{ secrets.instrumentId }}
 
-  
     steps:
       - uses: actions/checkout@v2
 
