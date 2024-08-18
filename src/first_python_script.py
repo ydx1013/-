@@ -8,6 +8,12 @@ import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from datetime import datetime, timedelta
 import time
+import os
+# 使用环境变量替换硬编码的用户名和密码
+USER_NAME = os.getenv('USERNAME')
+PASSWORD = os.getenv('PASSWORD')
+instrumentId = os.getenv('instrumentId')
+print(USER_NAME,PASSWORD,instrumentId)
 
 def get_capcha():
     headers = {
@@ -43,8 +49,8 @@ def get_cookie():
     i = 0
     data = {
     'wechatId': '',
-    'userName': '18300911968',
-    'password': 'uhl1DMPglHjqj3nhb/dPTQ==',
+    'userName': USER_NAME,
+    'password': PASSWORD,
     'code': capcha_define(),
     'freeLogin': 'true',
     'codeId': '5d66d9b9-db24-cbec-25fd-5028a070cd92',
@@ -71,7 +77,7 @@ def get_cookie():
         i += 1  # 使用 i += 1 来递增 i
         print("验证码错误，重新获取")
         lims_login, lims_account_info = get_cookie()
-    
+    print(lims_login)
     return lims_login, lims_account_info
 def main():
     next_day = datetime.now() + timedelta(days=1)
@@ -79,7 +85,7 @@ def main():
     end_time = next_day.replace(hour=15, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
     print(f"预定时间段：{begin_time} - {end_time}")
     data = {
-        'instrumentId': '1725',
+        'instrumentId': instrumentId,
         'beginTime': begin_time,
         'endTime': end_time,
         'remarks': '',
