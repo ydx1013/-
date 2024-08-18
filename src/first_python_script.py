@@ -122,6 +122,7 @@ def main():
                                  cookies=cookies, headers=headers, data=data)
         time.sleep(0.2)
         decoded_content = response.content.decode('utf-8')
+        print(decoded_content)
         if '"success":true' in decoded_content:
             print("预定成功")
             break
