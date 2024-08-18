@@ -1,11 +1,15 @@
+# -*- coding: utf-8 -*-
 import requests
 import ddddocr
 import requests
+import sys
+import io
+# 改变标准输出的默认编码为UTF-8
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from datetime import datetime, timedelta
 import time
 
 def get_capcha():
-
     headers = {
     'Accept': 'application/json, text/javascript, */*; q=0.01',
     'X-Requested-With': 'XMLHttpRequest',
@@ -18,7 +22,7 @@ def get_capcha():
     'Referer': 'https://www.zkshare.com/account/login?returnurl=%2Fwechat%2Finstrument%2Fdetail%3Fid%3D1740%26t%3D1723948265677%26t%3D1723948559662',
     'Connection': 'keep-alive',
     'Sec-Fetch-Dest': 'empty',
-}
+    }
 
     captcha_img = "https://www.zkshare.com/Account/SecurityCode?codeid=5d66d9b9-db24-cbec-25fd-5028a070cd92"
     if captcha_img:
@@ -36,6 +40,7 @@ def capcha_define():
     print(result)
     return result
 def get_cookie():
+    i = 0
     data = {
     'wechatId': '',
     'userName': '18300911968',
@@ -61,6 +66,12 @@ def get_cookie():
     # 获取特定的 cookie 值
     lims_account_info = response.cookies.get('lims_account_info')
     lims_login = response.cookies.get('lims_login')
+    i = 0
+    while lims_login is None and i < 3:  # 使用 is None 和 < 比较
+        i += 1  # 使用 i += 1 来递增 i
+        print("验证码错误，重新获取")
+        lims_login, lims_account_info = get_cookie()
+    
     return lims_login, lims_account_info
 def main():
     next_day = datetime.now() + timedelta(days=1)
@@ -109,12 +120,11 @@ def main():
         print("开始预定WB仪器")
         response = requests.post('https://www.zkshare.com/account/appointment/book', 
                                  cookies=cookies, headers=headers, data=data)
-        print(response.text)
+        decoded_content = response.content.decode('utf-8')
+        if '"success":true' in decoded_content:
+            print("预定成功")
+            break
         time.sleep(0.2)
-
-
-
-
 main()
 
 
