@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import time
 
 def get_capcha():
+
     headers = {
     'Accept': 'application/json, text/javascript, */*; q=0.01',
     'X-Requested-With': 'XMLHttpRequest',
@@ -17,7 +18,8 @@ def get_capcha():
     'Referer': 'https://www.zkshare.com/account/login?returnurl=%2Fwechat%2Finstrument%2Fdetail%3Fid%3D1740%26t%3D1723948265677%26t%3D1723948559662',
     'Connection': 'keep-alive',
     'Sec-Fetch-Dest': 'empty',
-    }    
+}
+
     captcha_img = "https://www.zkshare.com/Account/SecurityCode?codeid=5d66d9b9-db24-cbec-25fd-5028a070cd92"
     if captcha_img:
         captcha_url = captcha_img
@@ -28,12 +30,11 @@ def get_capcha():
 
 def capcha_define():
     get_capcha()
-    ocr = ddddocr.DdddOcr()
+    ocr = ddddocr.DdddOcr(show_ad=False)
     image = open("./captcha.jpg", "rb").read()
     result = ocr.classification(image)
     print(result)
     return result
-    
 def get_cookie():
     data = {
     'wechatId': '',
@@ -61,7 +62,6 @@ def get_cookie():
     lims_account_info = response.cookies.get('lims_account_info')
     lims_login = response.cookies.get('lims_login')
     return lims_login, lims_account_info
-
 def main():
     next_day = datetime.now() + timedelta(days=1)
     begin_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
@@ -99,7 +99,7 @@ def main():
     # 获取当前时间
     current_time = datetime.now()
     # 设定目标时间段
-    start_time = current_time.replace(hour=0, minute=59, second=59, microsecond=0)
+    start_time = current_time.replace(hour=8, minute=59, second=59, microsecond=0)
     end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
     # 等待直到进入目标时间段
     while datetime.now() < start_time:
@@ -107,15 +107,15 @@ def main():
     while start_time <= datetime.now() <= end_time:
         # 发送POST请求
         print("开始预定WB仪器")
-        response = requests.post('https://www.zkshare.com/account/appointment/book', cookies=cookies, headers=headers, data=data)
+        response = requests.post('https://www.zkshare.com/account/appointment/book', 
+                                 cookies=cookies, headers=headers, data=data)
+        print(response.text)
         time.sleep(0.2)
 
 
+
+
 main()
-
-
-
-
 
 
 
