@@ -120,11 +120,12 @@ def main():
         print("开始预定WB仪器")
         response = requests.post('https://www.zkshare.com/account/appointment/book', 
                                  cookies=cookies, headers=headers, data=data)
+        time.sleep(0.2)
         decoded_content = response.content.decode('utf-8')
         if '"success":true' in decoded_content:
             print("预定成功")
             break
-    time.sleep(0.2)
+    
 main()
 
 
