@@ -89,7 +89,7 @@ def main():
         'beginTime': begin_time,
         'endTime': end_time,
         'remarks': '',
-        'openRemind': 'false',
+        'openRemind': 'true',
         'codeId': '',
         'goods': '',
     }
