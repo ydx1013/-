@@ -81,7 +81,8 @@ def get_cookie():
     return lims_login, lims_account_info
 def main():
     # 预定时间
-    yd_time = 8
+    yd_time_hour = 10
+    yd_time_min = 25
     #仪器开始时间
     yq_time = 14
     
@@ -92,7 +93,7 @@ def main():
     # 获取当前时间
     current_time = datetime.now()
     # 设定目标时间段
-    start_time = current_time.replace(hour=yd_time-8, minute=20, second=59, microsecond=0)
+    start_time = current_time.replace(hour=yd_time_hour-8, minute=yd_time_min, second=59, microsecond=0)
     end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
     print("开始运行时间是：",start_time.hour),print("当前时间是：",current_time.hour)
     if start_time.hour != current_time.hour:
