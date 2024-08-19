@@ -84,6 +84,11 @@ def main():
     yd_time = 8
     #仪器开始时间
     yq_time = 14
+    
+    next_day = datetime.now() + timedelta(days=1)
+    begin_time = next_day.replace(hour=yq_time, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    end_time = next_day.replace(hour=yq_time+1, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    print(f"预定时间段：{begin_time} - {end_time}")
     # 获取当前时间
     current_time = datetime.now()
     # 设定目标时间段
@@ -93,10 +98,7 @@ def main():
     if start_time.hour != current_time.hour:
         print("不在运行时间内，停止运行\n")
         sys.exit()  # 停止运行
-    next_day = datetime.now() + timedelta(days=1)
-    begin_time = next_day.replace(hour=yq_time, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
-    end_time = next_day.replace(hour=yq_time+1, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
-    print(f"预定时间段：{begin_time} - {end_time}")
+        
     # 判断 start_time 与当前时间的差值是否大于10分钟，如果大于则停止运行
     if start_time - datetime.now() > timedelta(minutes=10):
         print("开始时间与当前时间的差值大于10分钟，停止运行")
