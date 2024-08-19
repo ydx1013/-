@@ -82,7 +82,7 @@ def get_cookie():
 def main():
     # 预定时间
     yd_time_hour = 10
-    yd_time_min = 25
+    yd_time_min = 29
     #仪器开始时间
     yq_time = 14
     
