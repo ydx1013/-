@@ -14,7 +14,7 @@ def wanlei():
   }
   
   
-  response = requests.post('https://appapi.biodog.cn//Center/Sign', cookies=cookies, headers=headers)
+  response = requests.post('https://shop.biodog.cn//Center/Sign', cookies=cookies, headers=headers)
   # 将 response.text 从 Unicode 转换为 UTF-8 编码的字符串
   response_text_utf8 = response.text.encode('utf-8').decode('unicode-escape')
   print(response_text_utf8)
