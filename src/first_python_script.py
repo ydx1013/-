@@ -13,7 +13,7 @@ import os
 USER_NAME = os.getenv('USERNAME')
 PASSWORD = os.getenv('PASSWORD')
 instrumentId = os.getenv('instrumentId')
-
+print(USER_NAME,PASSWORD,instrumentId)
 
 def get_capcha():
     headers = {
@@ -80,20 +80,10 @@ def get_cookie():
     print(lims_login)
     return lims_login, lims_account_info
 def main():
-    # 获取当前时间
-    current_time = datetime.now()
-    # 设定目标时间段
-    start_time = current_time.replace(hour=2, minute=36, second=59, microsecond=0)
-    end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
-    print("开始运行时间是：",start_time.hour),print("当前时间是：",current_time.hour)
-    if start_time.hour != current_time.hour:
-        print("不在运行时间内，停止运行\n")
-        sys.exit()  # 停止运行
     next_day = datetime.now() + timedelta(days=1)
     begin_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
     end_time = next_day.replace(hour=15, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
     print(f"预定时间段：{begin_time} - {end_time}")
-    
     data = {
         'instrumentId': "1730",
         'beginTime': begin_time,
@@ -123,7 +113,14 @@ def main():
         'Sec-Fetch-Dest': 'empty',
     }
 
-    
+    # 获取当前时间
+    current_time = datetime.now()
+    # 设定目标时间段
+    start_time = current_time.replace(hour=2, minute=45, second=59, microsecond=0)
+    end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
+    print("开始运行时间是：",start_time.hour),print("当前时间是：",current_time.hour)
+    if start_time.hour != current_time.hour:
+        sys.exit()  # 停止运行
     # 等待直到进入目标时间段
     while datetime.now() < start_time:
         time.sleep(0.1)  # 短暂休眠，避免过多的CPU使用
