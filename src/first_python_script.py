@@ -4,8 +4,9 @@ import ddddocr
 import requests
 import sys
 import io
-import wanlei.py
-wanlei()
+import wanlei
+wanlei.wanlei()
+
 # 改变标准输出的默认编码为UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from datetime import datetime, timedelta
