@@ -4,19 +4,20 @@ import ddddocr
 import requests
 import sys
 import io
-import wanlei
-wanlei.wanlei()
-
 # 改变标准输出的默认编码为UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from datetime import datetime, timedelta
 import time
 import os
+import wanlei
+wanlei.wanlei()
+
+
 # 使用环境变量替换硬编码的用户名和密码
 USER_NAME = os.getenv('USERNAME')
 PASSWORD = os.getenv('PASSWORD')
 instrumentId = os.getenv('instrumentId')
-print(USER_NAME,PASSWORD,instrumentId)
+
 
 def get_capcha():
     headers = {
