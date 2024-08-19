@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 import requests
-import io
-import sys
-# 改变标准输出的默认编码为UTF-8
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 def wanlei():
   cookies = {
     'PHPSESSID': '6m8q7k25h1cjrah8c782i6id46',
