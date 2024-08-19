@@ -80,33 +80,22 @@ def get_cookie():
     print(lims_login)
     return lims_login, lims_account_info
 def main():
-    # 预定时间
-    yd_time_hour = 8
-    yd_time_min = 59
-    #仪器开始时间
-    yq_time = 14
-    
-    next_day = datetime.now() + timedelta(days=1)
-    begin_time = next_day.replace(hour=yq_time, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
-    end_time = next_day.replace(hour=yq_time+1, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
-    print(f"预定时间段：{begin_time} - {end_time}")
     # 获取当前时间
     current_time = datetime.now()
     # 设定目标时间段
-    start_time = current_time.replace(hour=yd_time_hour-8, minute=yd_time_min, second=59, microsecond=0)
+    start_time = current_time.replace(hour=2, minute=36, second=59, microsecond=0)
     end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
     print("开始运行时间是：",start_time.hour),print("当前时间是：",current_time.hour)
     if start_time.hour != current_time.hour:
         print("不在运行时间内，停止运行\n")
         sys.exit()  # 停止运行
-        
-    # 判断 start_time 与当前时间的差值是否大于10分钟，如果大于则停止运行
-    if start_time - datetime.now() > timedelta(minutes=10):
-        print("开始时间与当前时间的差值大于10分钟，停止运行")
-        sys.exit()  # 停止运行
-    # 1725  wb    1730 拨片
+    next_day = datetime.now() + timedelta(days=1)
+    begin_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    end_time = next_day.replace(hour=15, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    print(f"预定时间段：{begin_time} - {end_time}")
+    
     data = {
-        'instrumentId': "1725",
+        'instrumentId': "1730",
         'beginTime': begin_time,
         'endTime': end_time,
         'remarks': '',
@@ -151,7 +140,6 @@ def main():
             break
     
 main()
-
 
 
 
