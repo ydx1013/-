@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 import requests
-import io
-import sys
-# 改变标准输出的默认编码为UTF-8
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 def wanlei():
   cookies = {
     'PHPSESSID': '6m8q7k25h1cjrah8c782i6id46',
@@ -24,6 +20,4 @@ def wanlei():
   }
   
   response = requests.post('https://appapi.biodog.cn//Center/Sign', cookies=cookies, headers=headers, data=data)
-  # 将 response.text 从 Unicode 转换为 UTF-8 编码的字符串
-  response_text_utf8 = response.text.encode('utf-8').decode('unicode-escape')
-  print(response_text_utf8)
+  print(response.text)
