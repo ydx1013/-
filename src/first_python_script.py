@@ -118,6 +118,9 @@ def main():
     # 设定目标时间段
     start_time = current_time.replace(hour=0, minute=59, second=59, microsecond=0)
     end_time = start_time + timedelta(seconds=2)  # 结束时间为 start_time 多 3 秒
+    print(start_time.hour,current_time.hour)
+    if start_time.hour != current_time.hour:
+        sys.exit()  # 停止运行
     # 等待直到进入目标时间段
     while datetime.now() < start_time:
         time.sleep(0.1)  # 短暂休眠，避免过多的CPU使用
