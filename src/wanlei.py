@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import requests
-import time
+import io
+import sys
+# 改变标准输出的默认编码为UTF-8
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 def wanlei():
   cookies = {
     'PHPSESSID': '6m8q7k25h1cjrah8c782i6id46',
@@ -17,7 +20,7 @@ def wanlei():
   data = {
       'MyKey': 'a3bf8ad5421091f9de92335e694b8cb0',
       'UserId': 'dd6b42f5dee5cef8383cece0d42dc056',
-      'timestamp': int(time.time()),
+      'timestamp': '1724039105',
   }
   
   response = requests.post('https://appapi.biodog.cn//Center/Sign', cookies=cookies, headers=headers, data=data)
