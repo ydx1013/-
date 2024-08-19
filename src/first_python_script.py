@@ -81,8 +81,8 @@ def get_cookie():
     return lims_login, lims_account_info
 def main():
     # 预定时间
-    yd_time_hour = 10
-    yd_time_min = 29
+    yd_time_hour = 8
+    yd_time_min = 59
     #仪器开始时间
     yq_time = 14
     
@@ -104,8 +104,9 @@ def main():
     if start_time - datetime.now() > timedelta(minutes=10):
         print("开始时间与当前时间的差值大于10分钟，停止运行")
         sys.exit()  # 停止运行
+    # 1725  wb    1730 拨片
     data = {
-        'instrumentId': instrumentId,
+        'instrumentId': "1725",
         'beginTime': begin_time,
         'endTime': end_time,
         'remarks': '',
