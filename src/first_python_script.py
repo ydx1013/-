@@ -85,8 +85,8 @@ def get_cookie():
     return lims_login, lims_account_info
 def main():
     next_day = datetime.now() + timedelta(days=1)
-    begin_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
-    end_time = next_day.replace(hour=15, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    begin_time = next_day.replace(hour=13, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
+    end_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
     print(f"预定时间段：{begin_time} - {end_time}")
     data = {
         'instrumentId': "1725", #instrumentId
