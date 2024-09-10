@@ -89,7 +89,7 @@ def main():
     end_time = next_day.replace(hour=14, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M')
     print(f"预定时间段：{begin_time} - {end_time}")
     data = {
-        'instrumentId': "1725", #instrumentId
+        'instrumentId': "1728", #instrumentId 1725
         'beginTime': begin_time,
         'endTime': end_time,
         'remarks': '',
