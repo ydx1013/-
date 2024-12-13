@@ -133,7 +133,7 @@ def main():
         print("开始预定WB仪器")
         response = requests.post('https://www.zkshare.com/account/appointment/book', 
                                  cookies=cookies, headers=headers, data=data)
-        time.sleep(0.2)
+        time.sleep(0.1)
         decoded_content = response.content.decode('utf-8')
         print(decoded_content)
         if '"success":true' in decoded_content:
