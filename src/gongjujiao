@@ -9,8 +9,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from datetime import datetime, timedelta
 import time
 import os
-import wanlei
-wanlei.wanlei()
+
 
 
 # 使用环境变量替换硬编码的用户名和密码
