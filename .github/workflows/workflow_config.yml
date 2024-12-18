@@ -5,6 +5,8 @@ on:
   schedule:
     # IMPORTANT: Set cron job in UTC timezone
     - cron: '50 0 * * *'
+  repository_dispatch:   # 添加这个触发器
+    types: [schedule_trigger]
 
 jobs:
   run-python-script:
@@ -13,12 +15,9 @@ jobs:
       USERNAME: ${{ secrets.USERNAME }}
       PASSWORD: ${{ secrets.PASSWORD }}
       instrumentId: ${{ secrets.instrumentId }}
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Install dependencies
         run: pip install requests ddddocr
-
       - name: Run Python script
         run: python src/first_python_script.py
