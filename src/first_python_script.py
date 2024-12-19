@@ -10,8 +10,6 @@ from datetime import datetime, timedelta
 import time
 import os
 import wanlei
-import gongjujiao
-gongjujiao.main()
 wanlei.wanlei()
 
 
@@ -143,7 +141,6 @@ def main():
             break
     
 main()
-
 
 
 
